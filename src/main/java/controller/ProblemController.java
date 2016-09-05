@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,9 +121,11 @@ public class ProblemController {
 	@RequestMapping(method=RequestMethod.DELETE, value={"problem/{id}/test/{id}"})
 	public void deleteTeste(@PathVariable long id_prob, @PathVariable long id_test){
 		Problem problem = problemRepo.findById(id_prob);
-		for (Test test : problem.getTests()) {
-			if (test.getId() == id_test){
-				problem.getTests().iterator().remove();
+		Iterator<Test> itr = problem.getTests().iterator();
+		while (itr.hasNext()){
+			Test t = itr.next();
+			if (t.getId() == id_test){
+				itr.remove();
 			}
 		}
 	}
