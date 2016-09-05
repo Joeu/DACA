@@ -1,56 +1,60 @@
 App: http://projetodirlididi-dacaufcg2016.rhcloud.com/
 Jenkins: https://projetodirlididijenkins-dacaufcg2016.rhcloud.com/
 
-** Testes executados com o comando: mvn test a partir do diretório onde o arquivo pom.xml se encontra. **
+** Testes executados com o comando: mvn test a partir do diretï¿½rio onde o arquivo pom.xml se encontra. **
 
 API - Dirlididi
+
 ---- GET /init povoa os dados ----
+
 ===== PROBLEM CONTROLLER =====
+
 GET
 
     /problem - Retorna os problemas do sistema
-    /problem/id - Retorna um problema específico
-    /problem/id/solution - Retorna as soluções de um problema
-    /problem/id/solution/id - Retorna uma solução específica
+    /problem/id - Retorna um problema especï¿½fico
+    /problem/id/solution - Retorna as soluï¿½ï¿½es de um problema
+    /problem/id/solution/id - Retorna uma soluï¿½ï¿½o especï¿½fica
     /problem/id/test - Retorna os testes de um problema
-    /problem/id/test/id - Retorna um teste específico
+    /problem/id/test/id - Retorna um teste especï¿½fico
 
 POST
 
     /problem - Cria novo problema
-    /problem/id/solution - Usuário posta solução para o problema
+    /problem/id/solution - Usuï¿½rio posta soluï¿½ï¿½o para o problema
     /problem/id/test - Cria novo teste para um problema
 
 DELETE
 
-    /problem/id - Deleta um problema específico
-    /problem/id/solution/id - Deleta uma solução específica
-    /problem/id/test/id - Deleta um teste específico
+    /problem/id - Deleta um problema especï¿½fico
+    /problem/id/solution/id - Deleta uma soluï¿½ï¿½o especï¿½fica
+    /problem/id/test/id - Deleta um teste especï¿½fico
 
 
 PUT - PATCH
 
-    /problem/id - Edita um problema específico
-    /problem/id/solution/id - Edita uma solução específica
-    /problem/id/test/id - Edita um teste específico
+    /problem/id - Edita um problema especï¿½fico
+    /problem/id/solution/id - Edita uma soluï¿½ï¿½o especï¿½fica
+    /problem/id/test/id - Edita um teste especï¿½fico
 
 ===== USER CONTROLLER =====
+
 GET
 
-    /user - Retorna os usuários de um sistema
-    /user/id - Retorna um usuário específico
-    /user/id/solution - Retorna as soluções de um usuário
-    /user/id/solution/id - Retorna solução específica
+    /user - Retorna os usuï¿½rios de um sistema
+    /user/id - Retorna um usuï¿½rio especï¿½fico
+    /user/id/solution - Retorna as soluï¿½ï¿½es de um usuï¿½rio
+    /user/id/solution/id - Retorna soluï¿½ï¿½o especï¿½fica
 
 DELETE
 
-    /user/id - Deleta um usuário específico
+    /user/id - Deleta um usuï¿½rio especï¿½fico
 
 POST
 
-    /user/ - Cria um usuário
+    /user/ - Cria um usuï¿½rio
 
 PUT - PATCH
 
-    /user/id - Edita um usuário específico
+    /user/id - Edita um usuï¿½rio especï¿½fico
 
