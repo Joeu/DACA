@@ -27,6 +27,12 @@ public class Solution implements Serializable{
 	public Problem problem;
 	
 	@Column
+	public Long idUser;
+	
+	@Column
+	public Long idProblem;
+	
+	@Column
 	public String content;
 	
 	@Column
@@ -40,21 +46,21 @@ public class Solution implements Serializable{
 		this.id = id;
 	}
 
-//	public User getAuthor() {
-//		return author;
-//	}
-//
-//	public void setAuthor(User author) {
-//		this.author = author;
-//	}
-//
-//	public Problem getProblem() {
-//		return problem;
-//	}
-//
-//	public void setProblem(Problem problem) {
-//		this.problem = problem;
-//	}
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public Problem getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problem problem) {
+		this.problem = problem;
+	}
 
 	public String getContent() {
 		return content;
@@ -70,6 +76,22 @@ public class Solution implements Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public Long getIdProblem() {
+		return idProblem;
+	}
+
+	public void setIdProblem(Long idProblem) {
+		this.idProblem = idProblem;
 	}
 	
 

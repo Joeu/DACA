@@ -12,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan({"bootwildfly", "persistence"})
-@EnableJpaRepositories("persistence")
+@ComponentScan("service")
+@EnableJpaRepositories("service")
 @EntityScan(basePackages="model")
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
