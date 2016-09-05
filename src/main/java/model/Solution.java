@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Solution implements Serializable{
@@ -16,13 +18,13 @@ public class Solution implements Serializable{
 	@GeneratedValue
 	private Long id;
 	
-//	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 //	@JoinColumn(name="id")
-//	public User author;
-//	
-//	@ManyToOne(fetch=FetchType.LAZY)
+	public User author;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 //	@JoinColumn(name="id")
-//	public Problem problem;
+	public Problem problem;
 	
 	@Column
 	public String content;
