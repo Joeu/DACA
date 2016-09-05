@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<head>
+
+</head>
+<body>
+	<b>API - Dirlididi</b>
+	<br>
+	<br>
+	<p>** Testes executados com o comando: <b><u>mvn test</u></b> a partir do diretório onde o arquivo pom.xml se encontra. **</b></p>
+	<br>
+	---- GET /init povoa os dados ----
+	<br>
+	<h3><b>===== PROBLEM CONTROLLER =====</b></h3>
+	<b>GET</b>
+	<ul>
+		<li>
+			/problem - Retorna os problemas do sistema
+		</li>
+		<li>
+			/problem/id - Retorna um problema específico
+		</li>
+		<li>
+			/problem/id/solution - Retorna as soluções de um problema
+		</li>
+		<li>
+			/problem/id/solution/id - Retorna uma solução específica
+		</li>
+		<li>
+			/problem/id/test - Retorna os testes de um problema
+		</li>
+		<li>
+			/problem/id/test/id - Retorna um teste específico
+		</li>
+	</ul>
+	<b>POST</b>
+	<ul>
+		<li>
+			/problem - Cria novo problema
+		</li>
+		<li>
+			/problem/id/solution - Usuário posta solução para o problema
+		</li>
+		<li>
+			/problem/id/test - Cria novo teste para um problema
+		</li>
+	</ul>
+	<b>DELETE</b>
+	<ul>
+		<li>
+			/problem/id - Deleta um problema específico
+		</li>
+		<li>
+			/problem/id/solution/id - Deleta uma solução específica
+		</li>
+		<li>
+			/problem/id/test/id - Deleta um teste específico
+		</li>
+	</ul>
+	<br>
+	<b>PUT - PATCH</b>
+	<ul>
+		<li>
+			/problem/id - Edita um problema específico
+		</li>
+		<li>
+			/problem/id/solution/id - Edita uma solução específica
+		</li>
+		<li>
+			/problem/id/test/id - Edita um teste específico
+		</li>
+	</ul>
+	<h3><b>===== USER CONTROLLER =====</b></h3>
+	<b>GET</b>
+	<br>
+	<ul>
+		<li>
+			/user - Retorna os usuários de um sistema
+		</li>
+		<li>
+			/user/id - Retorna um usuário específico
+		</li>
+		<li>
+			/user/id/solution - Retorna as soluções de um usuário
+		</li>
+		<li>
+			/user/id/solution/id - Retorna solução específica
+		</li>
+	</ul>
+	<b>DELETE</b>
+	<ul>
+		<li>
+			/user/id - Deleta um usuário específico
+		</li>
+	</ul>
+	<b>POST</b>
+	<ul>
+		<li>
+			/user/ - Cria um usuário
+		</li>
+	</ul>
+	<b>PUT - PATCH</b>
+	<ul>
+		<li>
+			/user/id - Edita um usuário específico
+		</li>
+	</ul>
+	
+</body>
+</html>
+
