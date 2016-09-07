@@ -1,7 +1,7 @@
 package app.controller;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import app.model.Problem;
 import app.model.Solution;
 import app.model.Submission;
-
 import app.service.ProblemRepository;
 
 @RestController
@@ -46,11 +45,10 @@ public class ProblemController {
 	 * @param id
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method=RequestMethod.GET, value={"/problem/{id}/solution"})
-	public List<Solution> getProblemSolutions(@PathVariable long id){
+	public Set<Solution> getProblemSolutions(@PathVariable long id){
 		Problem problem = problemRepo.findById(id);
-		return (List<Solution>) problem.getSolutions();
+		return problem.getSolutions();
 	}
 	
 	/**

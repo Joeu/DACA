@@ -18,7 +18,6 @@ import app.model.UserDTO;
 import app.service.UserRepository;
 
 @RestController
-@RequestMapping("/ws")
 public class UserController implements ErrorController{
 	
 	private static final String PATH = "/error";
@@ -27,9 +26,8 @@ public class UserController implements ErrorController{
 	private UserRepository userRepo;
 	
 	@RequestMapping("/user")
-	public String getUser(){
-		//return (List<User>) userRepo.findAll();
-		return "Te fode Joeu";
+	public List<User> getUser(){
+		return (List<User>) userRepo.findAll();
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/user/{id}"})
@@ -37,7 +35,7 @@ public class UserController implements ErrorController{
 		return (User) userRepo.findById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value={"user"})
+	@RequestMapping(method=RequestMethod.POST, value={"/user"})
 	public ResponseEntity<String> createUser(@RequestBody UserDTO userDto){
 		User user = new User(userDto.getName(), userDto.getEmail(), userDto.getPassword());
 		userRepo.save(user);
