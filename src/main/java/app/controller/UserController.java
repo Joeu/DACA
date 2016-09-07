@@ -26,8 +26,8 @@ public class UserController implements ErrorController{
 	private UserRepository userRepo;
 	
 	@RequestMapping("/user")
-	public List<User> getUser(){
-		return (List<User>) userRepo.findAll();
+	public ResponseEntity<List<User>> getUser(){
+		return new ResponseEntity<List<User>>((List<User>) userRepo.findAll(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/user/{id}"})
@@ -36,29 +36,30 @@ public class UserController implements ErrorController{
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value={"/user"})
-	public ResponseEntity<String> createUser(@RequestBody UserDTO userDto){
+	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto){
 		User user = new User(userDto.getName(), userDto.getEmail(), userDto.getPassword());
 		userRepo.save(user);
-		 return new ResponseEntity<String>(user.getEmail() + " created", HttpStatus.OK);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value={"/user/{id}"})
-	public User updateUser(@PathVariable long id){
+	public ResponseEntity<User> updateUser(@PathVariable long id){
 		User user = (User) userRepo.findById(id);
 		user.setName("TESTE");
-		return user;
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value={"/user/{id}"})
-	public void deleteUser(String id){
+	public ResponseEntity<String> deleteUser(String id){
 		userRepo.delete(id);
+		return new ResponseEntity<String>("Removido com sucesso", HttpStatus.OK);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method=RequestMethod.GET, value={"/user/{id}/solution"})
-	public List<Solution> getUserSolutions(@PathVariable long id){
+	public  ResponseEntity<List<Solution>> getUserSolutions(@PathVariable long id){
 		User user = (User) userRepo.findById(id);
-		return (List<Solution>) user.getSolutions();
+		return new  ResponseEntity<List<Solution>>((List<Solution>) user.getSolutions(), HttpStatus.OK);
 		
 	}
 	
