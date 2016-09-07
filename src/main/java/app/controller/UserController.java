@@ -1,4 +1,4 @@
-package controller;
+package app.controller;
 
 import java.util.List;
 
@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Solution;
-import model.User;
-import model.UserDTO;
-import service.UserRepository;
+import app.model.Solution;
+import app.model.User;
+import app.model.UserDTO;
+import app.service.UserRepository;
 
 @RestController
+@RequestMapping("/ws")
 public class UserController implements ErrorController{
 	
 	private static final String PATH = "/error";
@@ -25,9 +26,10 @@ public class UserController implements ErrorController{
 	@Autowired
 	private UserRepository userRepo;
 	
-	@RequestMapping(method=RequestMethod.GET, value="user")
-	public List<User> getUser(){
-		return (List<User>) userRepo.findAll();
+	@RequestMapping("/user")
+	public String getUser(){
+		//return (List<User>) userRepo.findAll();
+		return "Te fode Joeu";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/user/{id}"})

@@ -1,4 +1,4 @@
-package controller;
+package app.controller;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Problem;
-import model.Solution;
-import model.Submission;
-import model.Test;
-import service.ProblemRepository;
+import app.model.Problem;
+import app.model.Solution;
+import app.model.Submission;
+
+import app.service.ProblemRepository;
 
 @RestController
 public class ProblemController {
@@ -114,21 +114,21 @@ public class ProblemController {
 		problem.getSolutions().add(submission.getSolution());
 	}
 	
-	/**
-	 * Deleta teste específico
-	 * @return
-	 */
-	@RequestMapping(method=RequestMethod.DELETE, value={"problem/{id}/test/{id}"})
-	public void deleteTeste(@PathVariable long id_prob, @PathVariable long id_test){
-		Problem problem = problemRepo.findById(id_prob);
-		Iterator<Test> itr = problem.getTests().iterator();
-		while (itr.hasNext()){
-			Test t = itr.next();
-			if (t.getId() == id_test){
-				itr.remove();
-			}
-		}
-	}
+//	/**
+//	 * Deleta teste específico
+//	 * @return
+//	 */
+//	@RequestMapping(method=RequestMethod.DELETE, value={"problem/{id}/test/{id}"})
+//	public void deleteTeste(@PathVariable long id_prob, @PathVariable long id_test){
+//		Problem problem = problemRepo.findById(id_prob);
+//		Iterator<Test> itr = problem.getTests().iterator();
+//		while (itr.hasNext()){
+//			Test t = itr.next();
+//			if (t.getId() == id_test){
+//				itr.remove();
+//			}
+//		}
+//	}
 	
 	/**
 	 * Edita teste específico
