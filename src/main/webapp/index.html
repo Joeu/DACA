@@ -4,11 +4,13 @@
 <head>
 
 </head>
-<body>
+<body bgcolor="#E6E6FA">
+
 	<b>API - Dirlididi</b>
 	<br>
 	<br>
 	<p>** Testes executados com o comando: <b><u>mvn test</u></b> a partir do diretório onde o arquivo pom.xml se encontra. **</b></p>
+	<p><b>Aqui você encontra a documentação da API do Dirlididi, onde você pode saber os métodos e como funcionam</b></p>
 	<br>
 	---- GET /init povoa os dados ----
 	<br>
@@ -16,59 +18,59 @@
 	<b>GET</b>
 	<ul>
 		<li>
-			/problem - Retorna os problemas do sistema
+			<a href="#getproblems"> /problem </a>
 		</li>
 		<li>
-			/problem/id - Retorna um problema específico
+			<a href="#getproblem"> /problem/id </a>
 		</li>
 		<li>
-			/problem/id/solution - Retorna as soluções de um problema
+			<a href="#getproblemsolutions"> /problem/id/solution </a>
 		</li>
 		<li>
-			/problem/id/solution/id - Retorna uma solução específica
+			<a href="#getproblemsolution"> /problem/id/solution/id </a>
 		</li>
 		<li>
-			/problem/id/test - Retorna os testes de um problema
+			<a href="#getproblemtests"> /problem/id/test </a>
 		</li>
 		<li>
-			/problem/id/test/id - Retorna um teste específico
+			<a href="#getproblemtests"> /problem/id/test/id </a>
 		</li>
 	</ul>
 	<b>POST</b>
 	<ul>
 		<li>
-			/problem - Cria novo problema
+			<a href="#postproblem"> /problem </a>
 		</li>
 		<li>
-			/problem/id/solution - Usuário posta solução para o problema
+			<a href="#postproblemsolution"> /problem/id/solution </a>
 		</li>
 		<li>
-			/problem/id/test - Cria novo teste para um problema
+			<a href="#postproblemtest"> /problem/id/test </a>
 		</li>
 	</ul>
 	<b>DELETE</b>
 	<ul>
 		<li>
-			/problem/id - Deleta um problema específico
+			<a href="#deleteproblem"> /problem/id </a>
 		</li>
 		<li>
-			/problem/id/solution/id - Deleta uma solução específica
+			<a href="#deleteproblemsolution"> /problem/id/solution/id </a>
 		</li>
 		<li>
-			/problem/id/test/id - Deleta um teste específico
+			<a href="#deleteproblemtest"> /problem/id/test/id </a>
 		</li>
 	</ul>
 	<br>
 	<b>PUT - PATCH</b>
 	<ul>
 		<li>
-			/problem/id - Edita um problema específico
+			<a href="#putproblem"> /problem/id </a>
 		</li>
 		<li>
-			/problem/id/solution/id - Edita uma solução específica
+			<a href="#putproblemsolution"> /problem/id/solution/id </a>
 		</li>
 		<li>
-			/problem/id/test/id - Edita um teste específico
+			<a href="#putproblemtest"> /problem/id/test/id </a>
 		</li>
 	</ul>
 	<h3><b>===== USER CONTROLLER =====</b></h3>
@@ -76,34 +78,477 @@
 	<br>
 	<ul>
 		<li>
-			/user - Retorna os usuários de um sistema
+			<a href="#getusers"> /user </a>
 		</li>
 		<li>
-			/user/id - Retorna um usuário específico
+			<a href="#getuser"> /user/id </a>
 		</li>
 		<li>
-			/user/id/solution - Retorna as soluções de um usuário
+			<a href="#getusersolutions"> /user/id/solution </a>
 		</li>
 		<li>
-			/user/id/solution/id - Retorna solução específica
+			<a href="#getusersolution"> /user/id/solution/id </a>
 		</li>
 	</ul>
 	<b>DELETE</b>
 	<ul>
 		<li>
-			/user/id - Deleta um usuário específico
+			<a href="#deleteuser"> /user/id </a>
 		</li>
 	</ul>
 	<b>POST</b>
 	<ul>
 		<li>
-			/user/ - Cria um usuário
+			<a href="#postuser"> /user </a>
 		</li>
 	</ul>
 	<b>PUT - PATCH</b>
 	<ul>
 		<li>
-			/user/id - Edita um usuário específico
+			<a href="#putuser"> /user/id </a>
+		</li>
+	</ul>
+	
+	<h3><b>===== PROBLEM CONTROLLER =====</b></h3>
+	<br><b>===== GET =====</b>
+	<h2 id="getproblems"> GET /problem </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna todos os problemas cadastrados no sistema.
+		</li>
+		<li>
+			<b>Parametros</b> - Não possui.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"description": "Programa que calcula a media de um numero", "name": "Prob1", "status": "nao submetido", "tip": "teste"}
+					<br>&emsp;{"description": "Programa que calcula o fatorial de um numero", "name": "Prob2", "status": "nao submetido", "tip": "teste2"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Problemas retornados com sucesso". 
+				 
+		</li>
+	</ul>
+	
+	<h2 id="getproblem"> GET /problem/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna um problema especifico cadastrado no sistema.
+		</li>
+		<li>
+			<b>Parametros</b> - id do problema a ser procurado
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"description": "Programa que calcula a media de um numero", "name": "Prob1", "status": "nao submetido", "tip": "teste"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Problema retornado com sucesso". 
+				 
+		</li>
+	</ul>
+	
+	<h2 id="getproblemsolutions"> GET /problem/id/solution </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna as soluções submetidas para o referido problema.
+		</li>
+		<li>
+			<b>Parametros</b> - id do problema. 
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/solution
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"iduser": 1, "idProblem": 1, "content": "print 'Hello World'", "status": "Failed"}
+					<br>&emsp;{"iduser": 1, "idProblem": 1, "content": "print 'Teste'", "status": "Pass"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Soluções retornadas com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getproblemsolution"> GET /problem/id/solution/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna uma solução especifica para o problema.
+		</li>
+		<li>
+			<b>Parametros</b> - id do problema e id da solução. 
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/solution/1
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"iduser": 1, "idProblem": 1, "content": "print 'Hello World'", "status": "Failed"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Solução retornada com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getproblemtests"> GET /problem/id/test </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna todos os testes de um problema.
+		</li>
+		<li>
+			<b>Parametros</b> - id do problema 
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/test
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"id": 1, "name": "test problem1 1", "input": "2", "output": "4"}
+					<br>&emsp;{"id": 2, "name": "test problem1 2", "input": "4", "output": "6"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Testes da solução retornados com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getproblemtest"> GET /problem/id/test/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna todos um teste especifico de um problema.
+		</li>
+		<li>
+			<b>Parametros</b> - id do problema e id do teste
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/test/1
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"id": 1, "name": "test problem1 1", "input": "2", "output": "4"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Teste da solução retornado com sucesso". 
+				 
+		</li>
+	</ul>
+	<br>
+	<b>===== POST =====</b>
+	<br>
+	<h2 id="postproblem"> POST /problem/ </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Cria um novo problema.
+		</li>
+		<li>
+			<b>Parametros</b> - Objeto do tipo Problem
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Problema criado com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="postproblemsolution"> POST /problem/id/solution </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Usuário posta uma solução para um problema.
+		</li>
+		<li>
+			<b>Parametros</b> - Objeto do Submission e o id problema
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/solution
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Solução postada com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="postproblemtest"> POST /problem/id/test </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Cria um teste para o problema.
+		</li>
+		<li>
+			<b>Parametros</b> - Objeto do tipo Test e id do problema.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/test
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Teste criado com sucesso". 
+				 
+		</li>
+	</ul>
+	<br>
+	<b>===== DELETE =====</b>
+	<br>
+	<h2 id="deleteproblem"> DELETE /problem/id/ </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Deleta um problema específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Problema deletado com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="deleteproblemsolution"> DELETE /problem/id/solution/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Deleta um problema específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema e id da solução.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/solution/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Solução deletada com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="deleteproblemtest"> DELETE /problem/id/test/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Deleta um teste específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema e id do teste.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/test/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Teste deletado com sucesso". 
+				 
+		</li>
+	</ul>
+	<br>
+	<b>===== PUT =====</b>
+	<br>
+	<h2 id="putproblem"> PUT /problem/id/ </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Edita um problema específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Problema editado com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="putproblemsolution"> PUT /problem/id/solution/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Edita uma solução específica.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/solution/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Solução editada com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="putproblemtest"> PUT /problem/id/test/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Edita um teste específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do problema.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/problem/1/test/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Teste editado com sucesso". 
+				 
+		</li>
+	</ul>
+	<br>
+	<h3><b>===== USER CONTROLLER =====</b></h3>
+	<br><b>===== GET =====</b>
+	<h2 id="getusers"> GET /user </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna todos os usuários cadastrados no sistema.
+		</li>
+		<li>
+			<b>Parametros</b> - Não possui.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"name": "Pablo Herivelton", "email": "pherivelton@gmail.com", "senha": "123456"}
+					<br>&emsp;{"name": "Joeu Souza", "email": "joeumar@gmail.com", "senha": "12345678"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Usuarios retornados com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getuser"> GET /user/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna um usuário específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do usuário.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/1
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"name": "Pablo Herivelton", "email": "pherivelton@gmail.com", "senha": "123456"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Usuario retornado com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getusersolutions"> GET /user/id/solution </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna as soluções de um usuário específico.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do usuário.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/1/solution
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"iduser": 1, "idProblem": 1, "content": "print 'Hello World'", "status": "Submetido"}
+					<br>&emsp;{"iduser": 1, "idProblem": 2, "content": "print 'Ola'", "status": "Submetido"}
+					<br>&emsp;{"iduser": 1, "idProblem": 3, "content": "print 'Teste'", "status": "Submetido"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Soluções do usuário retornadas com sucesso". 
+				 
+		</li>
+	</ul>
+	<h2 id="getusersolution"> GET /user/id/solution/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Retorna uma solução especifica de um usuário.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do usuário e id da solução.
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/1/solution/1
+				<br><b>&emsp;Saída:</b>
+				<br>{
+					<br>&emsp;{"iduser": 1, "idProblem": 1, "content": "print 'Hello World'", "status": "Submetido"}
+				<br>}
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Soluções do usuário retornadas com sucesso". 
+				 
+		</li>
+	</ul>
+	<b>===== DELETE =====</b>
+	<br>
+	<h2 id="deleteuser"> DELETE /user/ </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Deleta um usuário.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do usuário
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Usuário deletado com sucesso". 
+				 
+		</li>
+	</ul>
+	<b>===== POST =====</b>
+	<br>
+	<h2 id="deleteuser"> POST /user/ </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Cria um usuário.
+		</li>
+		<li>
+			<b>Parametros</b> - Objeto do tipo User
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Usuário cadastrado com sucesso". 
+				 
+		</li>
+	</ul>
+	<b>===== PUT =====</b>
+	<br>
+	<h2 id="putuser"> PUT /user/id </h2>
+	<ul>
+		<li>
+			<b>Descrição</b> - Edita um usuário.
+		</li>
+		<li>
+			<b>Parametros</b> - Id do usuário
+		</li>
+		<li>
+			<b>Entrada e Saida</b>
+				<br><b>&emsp;Entrada: </b> http://localhost:8080/bootwildfly/user/1
+		</li>
+		<li>
+			<b>Mensagem de Retorno</b> - Usuário Editado com sucesso". 
+				 
 		</li>
 	</ul>
 	
