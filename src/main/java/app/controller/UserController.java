@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class UserController implements ErrorController{
 	@Autowired
 	private UserRepository userRepo;
 	
-	@RequestMapping("/user")
+	@RequestMapping(method=RequestMethod.GET, value={"/user"})
 	public ResponseEntity<List<User>> getUser(){
 		return new ResponseEntity<List<User>>((List<User>) userRepo.findAll(), HttpStatus.OK);
 	}
@@ -35,7 +36,7 @@ public class UserController implements ErrorController{
 		return (User) userRepo.findById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value={"/user"})
+	@RequestMapping(method=RequestMethod.POST, value={"/user"}, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto){
 		User user = new User(userDto.getName(), userDto.getEmail(), userDto.getPassword());
 		userRepo.save(user);
