@@ -2,23 +2,19 @@ package app.model;
 
 public class UserDTO {
 
-	private String name;
+	private String type;
 	private String email;
 	private String password;
 	
-	public UserDTO(String name, String email, String password) {
+	public UserDTO(){
+		
+	}
+	
+	public UserDTO(String email, String password, String type) {
 		super();
-		this.name = name;
 		this.email = email;
 		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		this.type = type;
 	}
 
 	public String getEmail() {
@@ -35,6 +31,14 @@ public class UserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getType() {
+		return type;
+	}
+	
+	public void setTyoe(String type) {
+		this.type = type;
 	}
 	
 	

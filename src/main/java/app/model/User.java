@@ -19,15 +19,13 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public User(String name) {
-		super();
-		this.name = name;
+	public User() {
 	}
     
-    public User(String type, String name, String email) {
+    public User(String email, String password, String type) {
 		super();
 		this.type = type;
-		this.name = name;
+		this.password = password;
 		this.email = email;
 	}
 	
@@ -39,7 +37,7 @@ public class User implements Serializable{
 	public String type;
 	
 	@Column
-	public String name;
+	public String password;
 	
 	@Column
 	public String email;
@@ -55,12 +53,12 @@ public class User implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getType() {

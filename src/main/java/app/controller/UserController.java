@@ -3,10 +3,10 @@ package app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +19,14 @@ import app.model.UserDTO;
 import app.service.UserRepository;
 
 @RestController
-public class UserController implements ErrorController{
+public class UserController{
 	
 	private static final String PATH = "/error";
 	
 	@Autowired
 	private UserRepository userRepo;
 	
+	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET, value={"/user"})
 	public ResponseEntity<List<User>> getUser(){
 		return new ResponseEntity<List<User>>((List<User>) userRepo.findAll(), HttpStatus.OK);
@@ -36,9 +37,9 @@ public class UserController implements ErrorController{
 		return (User) userRepo.findById(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value={"/user"}, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method=RequestMethod.POST, value={"/user"}, produces=MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> createUser(@RequestBody UserDTO userDto){
-		User user = new User(userDto.getName(), userDto.getEmail(), userDto.getPassword());
+		User user = new User(userDto.getEmail(), userDto.getPassword(), userDto.getType());
 		userRepo.save(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
@@ -46,7 +47,6 @@ public class UserController implements ErrorController{
 	@RequestMapping(method=RequestMethod.PUT, value={"/user/{id}"})
 	public ResponseEntity<User> updateUser(@PathVariable long id){
 		User user = (User) userRepo.findById(id);
-		user.setName("TESTE");
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
@@ -64,14 +64,14 @@ public class UserController implements ErrorController{
 		
 	}
 	
-    @RequestMapping(value = PATH)
-    public String error() {
-        return "Error handling";
-    }
-
-	@Override
-	public String getErrorPath() {
-		return PATH;
-	}
+//    @RequestMapping(value = PATH)
+//    public ResponseEntity<> error() {
+//        return n;
+//    }
+//
+//	@Override
+//	public String getErrorPath() {
+//		return PATH;
+//	}
 
 }
