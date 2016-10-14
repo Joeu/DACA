@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class ProblemController {
 	 * Retorna os problemas so sistema
 	 * @return
 	 */
+	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET, value={"/problem"}, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Problem> getProblems(){
 		return (List<Problem>) problemRepo.findAll();
